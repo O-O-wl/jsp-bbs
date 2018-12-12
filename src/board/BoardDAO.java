@@ -18,13 +18,25 @@ public class BoardDAO {
 		
 	}*/
 	
-	public List<Board> findAll(Connection conn,int pageNumber,int PAGE_SIZE) throws SQLException{
+	public List<Board> findAll(Connection conn,int pageNumber,int PAGE_SIZE,int option) throws SQLException{
 		
-		String sql ="SELECT * FROM BOARD LIMIT ?,?";
+		String sql ="SELECT * FROM BOARD ";
+		switch(option) {
+		case 1:
+			sql+="ORDER BY id DESC ";
+			break;
+		case 2:
+			sql+="ORDER BY id ASC ";
+			break;
+		case 3:
+			sql+="ORDER BY user ASC ";
+			
+		}
+		sql+="LIMIT ?,? ";
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		
-		try{int firstRow=(pageNumber-1)*PAGE_SIZE+1;
+		try{int firstRow=(pageNumber-1)*PAGE_SIZE;
 		 pstmt=conn.prepareStatement(sql);
 		pstmt.setInt(1,firstRow);
 		pstmt.setInt(2,PAGE_SIZE);

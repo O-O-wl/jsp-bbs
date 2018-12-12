@@ -13,7 +13,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <%request.setCharacterEncoding("utf-8"); %>
 <meta charset="UTF-8">
-<title>list1</title>
+<title>게시글수정-DEMO</title>
 </head>
 <%
 if(request.getMethod().equals("POST")){%>
@@ -51,9 +51,11 @@ else{
 <%} %>
 <body>
 <div class="container">
+	
 	<div class="col-lg-4"></div>
 	<div class="col-lg-4">
-	<div class="jumbotron" style="padding-top:20px">
+		<div class="jumbotron" style="padding-top:20px">
+<h3 style="text-align: center"><b>글 수정</b> </h3>
 	<form method="post">
 	
 		<div class="form-group">
@@ -79,11 +81,12 @@ else{
     	   
     	   <a href ="list.jsp" class="btn btn-info" type="submit">목록으로</a>
     	   
-	</form>
-	</div>
-	<div class="col-lg-4"></div>
+</form>
+</div>
+<div class="col-lg-4"></div>
 </div>
 </div>
+
 
 </body>
 </html>

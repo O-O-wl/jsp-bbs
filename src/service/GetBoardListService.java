@@ -14,11 +14,11 @@ public class GetBoardListService {
 	public static GetBoardListService getInstance() {
 		return instance;
 	}
-	public List<Board> findAll(int pageSize) throws Exception{
+	public List<Board> findAll(int pageSize,int option) throws Exception{
 		Connection conn =null;
 		try{conn=ConnectionProvider.getConnection();
 		BoardDAO boardDao= new BoardDAO();
-		return boardDao.findAll(conn,pageSize,PAGE_SIZE);}finally {JdbcUtil.close(conn);}
+		return boardDao.findAll(conn,pageSize,PAGE_SIZE,option);}finally {JdbcUtil.close(conn);}
 		
 	}
 	public Board findById(int id) throws Exception{

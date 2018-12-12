@@ -11,28 +11,39 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
         rel="stylesheet" media="screen">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+ crossorigin="anonymous">
+
+</script>
+
 <meta charset="UTF-8">
-<title>list1</title>
+<title>작성자검색-DEMO</title>
 </head>
 <body>
+
 <div class="container">
-	<div class="col-lg-4"></div>
-	<div class="col-lg-4">
+
+<div class="col-lg-4"></div>
+<div class="col-lg-4">
 	<div class="jumbotron" style="padding-top:20px">
+<h4><b> 글 검색</b> </h4>
 	<form>
 		  <div class="form-group">
       		<label>작성자:</label>
-     		<input name="search" type="text" class="form-control w50" value="<%=request.getParameter("search")==null?"":request.getParameter("search")%>">
-     		
-    	   </div>
-    	   <button type="submit" class="btn btn-primary form-control">검색</button>
+     		<input name="search" type="text" class="form-control" value="<%=request.getParameter("search")==null?"":request.getParameter("search")%>"><br>
+<button type="submit" class="btn btn-primary form-control">검색</button>
+		   </div>
+<a href="index.jsp" class="btn btn-info form-control">초기화면으로</a>
+    	   
 	</form>
-	</div>
-	<div class="col-lg-4"></div>
+</div>
+<div class="col-lg-4"></div>
 </div>
 </div>
+
+
 	<%
+	int totalCount=0;
 	String search;
 	if(request.getParameter("search")==null){
  search ="";}
@@ -41,10 +52,17 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	}
 		
 	  GetBoardListService service =GetBoardListService.getInstance();
-	  List<Board> boards=service.findBySearch(search); %>
-	  
+	  List<Board> boards=service.findBySearch(search); 
+		totalCount=boards.size();
+		  %>
+
 	  <c:set var="boards" value="<%=boards %>"/>
-	 <table class="table table-bordered mt5"> 
+<h3 style="text-align: center"><b>검색 리스트</b> </h3>
+<h4 style="text-align: center"><b> 총 [ <%=totalCount%> ]건의 게시물이 조회 되었습니다.</b> </h4>
+</h3>
+
+<table class="table table-hover table-bordered">
+	
 	  <tr>
 		<td>작성자</td>
 		<td>글내용</td>
@@ -53,6 +71,8 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 		<td>삭제</td>
 	</tr>
 	  <c:forEach var="board" items="${boards}">
+<script>resultcount+=1;</script>
+
 	  	<tr>
 		<td>${board.user}</td>
 		<td>${board.content}</td>
@@ -62,7 +82,9 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 </tr>	
 	  </c:forEach>
 	  </table><% %>
-	<a href="index.jsp" class="btn btn-info">목록으로</a>
+	
+	
+</div>
 
 </body>
 </html>

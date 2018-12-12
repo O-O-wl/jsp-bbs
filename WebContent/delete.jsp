@@ -38,23 +38,25 @@ else{
 	location.href="list.jsp"</script><%
 }}
 else{%>
-<title>list1</title>
+<title>게시글삭제-DEMO</title>
 </head>
 <body>
 <div class="container">
+
 	<div class="col-lg-4"></div>
 	<div class="col-lg-4">
-	<div class="jumbotron" style="padding-top:20px">
+		<div class="jumbotron" style="padding-top:20px">
+			<h3 style="text-align: center"><b>비밀번호 확인</b> </h3>
 	<form method="post">
 		  <div class="form-group">
       		<label>비밀번호</label>
      		<input name="password" type="password" class="form-control w50" >
      		
     	   </div>
-    	   <button type="submit" class="btn btn-primary form-control">삭제</button>
+<button type="submit" class="btn btn-primary form-control">삭제</button>
 	</form>
-	</div>
-	<div class="col-lg-4"></div>
+</div>
+<div class="col-lg-4"></div>
 </div>
 </div>
 <%} %>
